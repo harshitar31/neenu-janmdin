@@ -141,6 +141,23 @@ body{
     max-width:700px;
 }
 
+/* ---------------- TYPING EFFECT ---------------- */
+
+.typing-title .cursor{
+    display:inline-block;
+    margin-left:4px;
+    animation:blink 0.8s infinite;
+}
+
+@keyframes blink{
+    0%, 50%{
+        opacity:1;
+    }
+    51%, 100%{
+        opacity:0;
+    }
+}
+
 .hero p{
 
     margin-top:28px;
@@ -617,9 +634,8 @@ body{
                     hiiii!!!
                 </div>
 
-                <h1 class="fade-up delay-1" style="color: #c86f84;">
-                    happpyyyyy<br>
-                    birthdayyyyy neeenu
+                <h1 class="fade-up delay-1 typing-title" style="color: #c86f84;">
+                    <span id="typed-title"></span><span class="cursor">|</span>
                 </h1>
 
                 <p class="fade-up delay-2">
@@ -656,7 +672,6 @@ body{
 
             </div>
 
-
         </div>
 
         <div class="grid">
@@ -672,7 +687,6 @@ body{
                         <div class="front-icon">
                             🎀
                         </div>
-
 
                         <p>
                             This one felt very you.
@@ -697,8 +711,6 @@ body{
                             <h4>
                                 neenu themed socks
                             </h4>
-
-
 
                         </div>
 
@@ -744,7 +756,6 @@ body{
                                 Main character item honestly
                             </h4>
 
-
                         </div>
 
                     </div>
@@ -764,7 +775,6 @@ body{
                         <div class="front-icon">
                             ♡
                         </div>
-
 
                         <p>
                             we had to lol
@@ -789,7 +799,6 @@ body{
                             <h4>
                                 you can start convos with this
                             </h4>
-
 
                         </div>
 
@@ -825,7 +834,7 @@ body{
    COUNTDOWN LOCK
 ========================= */
 
-const unlockDate = new Date("2026-05-21T00:00:00");
+const unlockDate = new Date("2026-05-22T00:00:00");
 
 /* CREATE LOCK SCREEN */
 
@@ -1112,6 +1121,37 @@ cards.forEach(card => {
         card.classList.toggle("active");
 
     });
+
+});
+
+/* =========================
+   HERO TITLE TYPING EFFECT
+========================= */
+
+const titleText = "happyyyyy birthdayyyy neenuuuu";
+
+const typedTitle = document.getElementById("typed-title");
+
+let index = 0;
+
+function typeTitle(){
+
+    if(index < titleText.length){
+
+        typedTitle.innerHTML +=
+            titleText.charAt(index);
+
+        index++;
+
+        setTimeout(typeTitle, 120);
+    }
+}
+
+window.addEventListener("load", () => {
+
+    typedTitle.innerHTML = "";
+
+    typeTitle();
 
 });
 
